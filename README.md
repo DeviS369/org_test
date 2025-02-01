@@ -22,3 +22,4 @@ selenium-orangehrm/ │ ├── │ ── config/ # Configuration files │ �
 ## Run the tests
     python -m unittest discover -s tests
 
+## Note : I have wrritten code for install chrome directly . So  drivers folder not neccessary for call chrome directly 
