@@ -1,22 +1,21 @@
 import json
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 from dotenv import load_dotenv
 import os
 load_dotenv()
 def setup_driver():
-    """Sets up and returns a WebDriver instance."""
-    url = os.environ.get('app_url')
-    
-    # Set up ChromeDriver service
-    service = Service(r"C:\orange_hrm\drivers\chromedriver\chromedriver.exe")
-    
-    # Initialize the WebDriver
-    driver = webdriver.Chrome(service=service)
-    
-    # Configure WebDriver
-    driver.maximize_window()
-    driver.get(url) # Load the application URL
-    
-    return driver
-
+    try:
+        app_url = os.environ.get("APP_URL")
+        # Initialize ChromeDriver
+        service = Service(ChromeDriverManager().install())
+        options = webdriver.ChromeOptions()
+        options.add_argument("--start-maximized")
+        driver = webdriver.Chrome(service=service, options=options)
+        driver.get(app_url)
+        return driver
+    except Exception as e:
+        print(f"Error initializing WebDriver: {e}")
+        raise
+setup_driver()
