@@ -5,7 +5,7 @@ class PIMPage:
         self.driver = driver
         self.pim_menu = (By.ID, "menu_pim_viewPimModule")
         self.add_employee_button = (By.ID, "btnAdd")
-        #add_employee_button = driver.execute_script("return document.getElementById('btnAdd');")
+        add_employee_button = driver.execute_script("return document.getElementById('btnAdd');")
         self.first_name_input = (By.ID, "firstName")
         self.last_name_input = (By.ID, "lastName")
         self.save_button = (By.ID, "btnSave")
